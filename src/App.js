@@ -10,6 +10,10 @@ import SignIn from './components/auth/SignIn'
 import SignOut from './components/auth/SignOut'
 import ChangePassword from './components/auth/ChangePassword'
 
+import Character from './components/Character/Character'
+import CharacterCreate from './components/Character/CharacterCreate'
+import CharacterEdit from './components/Character/CharacterEdit'
+
 const App = () => {
   const [user, setUser] = useState(null)
   const [msgAlerts, setMsgAlerts] = useState([])
@@ -18,7 +22,7 @@ const App = () => {
 
   const msgAlert = ({ heading, message, variant }) => {
     const id = uuid()
-    setMsgAlerts(msgAlerts => ([...msgAlerts, { heading, message, variant, id }]))
+    setMsgAlerts(msgAlerts => [...msgAlerts, { heading, message, variant, id }])
   }
 
   return (
@@ -37,21 +41,40 @@ const App = () => {
         <Routes>
           <Route
             path='/sign-up'
-            element={<SignUp msgAlert={msgAlert} setUser={setUser} /> }
+            element={<SignUp msgAlert={msgAlert} setUser={setUser} />}
           />
           <Route
             path='/sign-in'
-            element={<SignIn msgAlert={msgAlert} setUser={setUser} /> }
+            element={<SignIn msgAlert={msgAlert} setUser={setUser} />}
           />
           <Route
             path='/sign-out'
-            element={<SignOut msgAlert={msgAlert} clearUser={clearUser} user={user} /> }
+            element={
+              <SignOut msgAlert={msgAlert} clearUser={clearUser} user={user} />
+            }
           />
           <Route
             path='/change-password'
-            element={<ChangePassword msgAlert={msgAlert} user={user} /> }
+            element={<ChangePassword msgAlert={msgAlert} user={user} />}
           />
-
+          <Route
+            path='/characters/:id'
+            element={<Character user={user} msgAlert={msgAlert} />}
+          />
+          <Route
+            path='/characters/:id/edit'
+            element={<CharacterEdit user={user} msgAlert={msgAlert} />}
+          />
+          <Route
+            path='/characters/create'
+            element={
+              <CharacterCreate
+                user={user}
+                setUser={setUser}
+                msgAlert={msgAlert}
+              />
+            }
+          />
         </Routes>
       </main>
     </>

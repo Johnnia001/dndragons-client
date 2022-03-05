@@ -77,7 +77,7 @@ const Character = ({ user, msgAlert }) => {
     return (
       <>
         <h2>{character.name}</h2>
-        <h4>About Me:</h4>
+        <h4>Character</h4>
         <p>{character.about}</p>
         <Button onClick={onDeleteCharacter} variant='danger' type='button'>
           Delete Character

@@ -11,20 +11,32 @@ import {
 
 const CharacterCreate = ({ user, setUser, msgAlert }) => {
   const [name, setName] = useState('')
-  const [aboutMe, setAboutMe] = useState('')
+  const [level, setLevel] = useState('')
+  const [exp, setExp] = useState('')
+  const [charClass, setCharClass] = useState('')
+  const [race, setRace] = useState('')
+  const [alignment, setAlignment] = useState('')
+  const [background, setBackground] = useState('')
   const [shouldNavigate, setShouldNavigate] = useState(false)
-  // TODO: FIX THIS SO IT DOESNT LOG YOU OUT
-  //
-  //
-  /* if (!user) {
+
+  if (!user) {
     return <Navigate to='/' />
-  } */
+  }
 
   const onCharacterCreate = async event => {
     event.preventDefault()
 
     try {
-      await createCharacter(user, name, aboutMe).then(res => {
+      await createCharacter(
+        user,
+        name,
+        level,
+        exp,
+        charClass,
+        race,
+        alignment,
+        background
+      ).then(res => {
         user.character = res.data.character
       })
       msgAlert({
@@ -40,7 +52,12 @@ const CharacterCreate = ({ user, setUser, msgAlert }) => {
         variant: 'danger'
       })
       setName('')
-      setAboutMe('')
+      setLevel('')
+      setExp('')
+      setCharClass('')
+      setRace('')
+      setAlignment('')
+      setBackground('')
     }
   }
 
@@ -51,7 +68,7 @@ const CharacterCreate = ({ user, setUser, msgAlert }) => {
   return (
     <div className='row'>
       <div className='col-sm-10 col-md-8 mx-auto mt-5'>
-        <h3>Create Your Character</h3>
+        <h3>Character Information</h3>
 
         <Form onSubmit={onCharacterCreate}>
           <Form.Group className='mb-3' controlId='name'>
@@ -65,14 +82,99 @@ const CharacterCreate = ({ user, setUser, msgAlert }) => {
             />
           </Form.Group>
 
-          <Form.Group className='mb-3' controlId='aboutMe'>
-            <Form.Label>Back Story</Form.Label>
+          <Form.Group className='mb-4' controlId='level'>
+            <Form.Label>Level</Form.Label>
             <Form.Control
               required
-              value={aboutMe}
-              type='aboutMe'
-              placeholder='Does not have to be sad'
-              onChange={event => setAboutMe(event.target.value)}
+              value={level}
+              type='level'
+              placeholder='Check with your DM what level you are starting at.'
+              onChange={event => setLevel(event.target.value)}
+            />
+          </Form.Group>
+
+          <Form.Group className='mb-4' controlId='exp'>
+            <Form.Label>Experience Points</Form.Label>
+            <Form.Control
+              required
+              value={exp}
+              type='exp'
+              placeholder='Check with your DM how much EXP you are starting at.'
+              onChange={event => setExp(event.target.value)}
+            />
+          </Form.Group>
+
+          <Form.Select aria-label='charClass' selectId='charClass'>
+            <option>Class</option>
+            <option value='Artificer'>Artificer</option>
+            <option value='Barbarian'>Barbarian</option>
+            <option value='Bard'>Bard</option>
+            <option value='Blood Hunter'>Blood Hunter</option>
+            <option value='Cleric'>Cleric</option>
+            <option value='Druid'>Druid</option>
+            <option value='Fighter'>Fighter</option>
+            <option value='Monk'>Monk</option>
+            <option value='Paladin'>Paladin</option>
+            <option value='Ranger'>Ranger</option>
+            <option value='Rogue'>Rogue</option>
+            <option value='Sorcerer'>Sorcerer</option>
+            <option value='Warlock'>Warlock</option>
+            <option value='Wizard'>Wizard</option>
+            <Form.Control
+              required
+              value={charClass}
+              type='charClass'
+              onChange={event => setCharClass(event.target.value)}
+            />
+          </Form.Select>
+
+          <Form.Select aria-label='Race'>
+            <option>Race</option>
+            <option value='Dragon Born'>Dragon Born</option>
+            <option value='Dwarf'>Dwarf</option>
+            <option value='Elf'>Elf</option>
+            <option value='Gnome'>Gnome</option>
+            <option value='Half Elf'>Half Elf</option>
+            <option value='Halfling'>Halfling</option>
+            <option value='Half-Orc'>Half-Orc</option>
+            <option value='Human'>Human</option>
+            <option value='Tiefling'>Tiefling</option>
+            <Form.Control
+              required
+              value={race}
+              type='race'
+              onChange={event => setRace(event.target.value)}
+            />
+          </Form.Select>
+
+          <Form.Select aria-label='Alignment'>
+            <option>Alignment</option>
+            <option value='Lawful Good'>Lawful Good</option>
+            <option value='Neutral Good'>Neutral Good</option>
+            <option value='Chaotic Good'>Chaotic Good</option>
+            <option value='Lawful Neutral'>Lawful Neutral</option>
+            <option value='True Neutral'>True Neutral</option>
+            <option value='Chaotic Neutral'>Chaotic Neutral</option>
+            <option value='Lawful Evil'>Lawful Evil</option>
+            <option value='Neutral Evil'>Neutral EVil</option>
+            <option value='Chaotic Evil'>Chaotic Evil</option>
+            <option value='Unaligned'>Unaligned</option>
+            <Form.Control
+              required
+              value={alignment}
+              type='alignment'
+              onChange={event => setAlignment(event.target.value)}
+            />
+          </Form.Select>
+
+          <Form.Group className='mb-4' controlId='background'>
+            <Form.Label>Background</Form.Label>
+            <Form.Control
+              required
+              value={background}
+              type='background'
+              placeholder='Gives you special bonuses based on your choice'
+              onChange={event => setBackground(event.target.value)}
             />
           </Form.Group>
 

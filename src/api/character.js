@@ -9,13 +9,28 @@ export const getOneCharacter = (user, id) => {
   })
 }
 
-export const createCharacter = (user, name, about) => {
+export const createCharacter = (
+  user,
+  name,
+  level,
+  exp,
+  charClass,
+  race,
+  alignment,
+  background
+) => {
   return axios.post(
     `${apiUrl}/characters/`,
     {
       character: {
+        user,
         name,
-        about
+        level,
+        exp,
+        charClass,
+        race,
+        alignment,
+        background
       }
     },
     {

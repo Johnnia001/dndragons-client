@@ -1,36 +1,39 @@
 import React, { useState, useEffect } from 'react'
-import { Navigate, Link, useParams } from 'react-router-dom'
-import { indexCharacters, deleteCharacter } from '../../api/character'
-import { Spinner } from 'react-bootstrap'
+import { Link, Navigate, useParams } from 'react-router-dom'
+import { Spinner, Button } from 'react-bootstrap'
 
-import Button from 'react-bootstrap/Button'
-import {
-  characterDeleteSuccess,
-  characterFindError
-} from '../AutoDismissAlert/messages'
+import { deleteCharacter, getOneCharacter } from '../../api/character'
+import { characterDeleteSuccess } from '../AutoDismissAlert/messages'
 
 const Character = ({ user, msgAlert }) => {
   const [character, setCharacter] = useState(null)
-  const [shouldNavigate, setShouldNavigate] = useState(false)
+  const [deleted] = useState(false)
   const { id } = useParams()
+  const [shouldNavigate, setShouldNavigate] = useState(false)
 
+  // if user is null, redirect to home page
+  // Note: Must check before useEffect, since it needs user
   if (!user) {
     return <Navigate to='/' />
   }
 
   useEffect(() => {
-    const fetchCharacter = async () => {
+    // When using async & await in a `useEffect` function
+    // We have to wrap our `async` code in a function:
+    // https://stackoverflow.com/a/53572588
+    const fetchData = async () => {
       try {
-        await indexCharacters(user).then(res => setCharacter(res.data.character))
+        const res = await getOneCharacter(id, user)
+        setCharacter(res.data.character)
       } catch (error) {
         msgAlert({
-          heading: 'Finding Character failed with error: ',
-          message: characterFindError,
+          heading: 'Character failed to load',
+          message: error.message,
           variant: 'danger'
         })
       }
     }
-    fetchCharacter()
+    fetchData()
   }, [])
 
   const onDeleteCharacter = async () => {
@@ -57,35 +60,39 @@ const Character = ({ user, msgAlert }) => {
     return <Navigate to='/' />
   }
 
-  if (character === null) {
+  // 3 states:
+  // If character is `null`, we are loading
+  if (!character) {
     return (
-      <>
-        <h4>Fetching Character</h4>
-        <Spinner animation='border' role='status'>
-          <span className='visually-hidden'>Loading...</span>
-        </Spinner>
-        <Button
-          onClick={() => setShouldNavigate(true)}
-          variant='primary'
-          type='button'
-        >
-          Return Home
-        </Button>
-      </>
+      <Spinner animation='border' role='status'>
+        <span className='visually-hidden'>Loading...</span>
+      </Spinner>
     )
+  } else if (deleted) {
+    return <Navigate to='/characters' />
   } else {
+    // We have a character, display it!
     return (
-      <>
-        <h4>Character</h4>
-        <Button onClick={onDeleteCharacter} variant='danger' type='button'>
-          Delete Character
-        </Button>
-        <Link to={`/characters/${id}/edit`}>
-          <Button variant='primary' type='submit'>
-            Edit Character
+      <div className='row'>
+        <div className='col-sm-10 col-md-8 mx-auto mt-5'>
+          <h3>{character.name}</h3>
+          <p>Level: {character.level}</p>
+          <p>EXP:{character.exp}</p>
+          <p>{character.charClass}</p>
+          <p>{character.race}</p>
+          <p>{character.alignment}</p>
+          <p>{character.background}</p>
+
+          <Button variant='danger' onClick={onDeleteCharacter}>
+            Delete Character
           </Button>
-        </Link>
-      </>
+          <Link to={`/characters/${id}/edit`}>
+            <Button variant='primary' type='submit'>
+              Update Character
+            </Button>
+          </Link>
+        </div>
+      </div>
     )
   }
 }

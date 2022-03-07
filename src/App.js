@@ -12,6 +12,7 @@ import ChangePassword from './components/auth/ChangePassword'
 import Home from './components/Home'
 
 import Character from './components/Character/Character'
+import Characters from './components/Character/Characters'
 import CharacterCreate from './components/Character/CharacterCreate'
 import CharacterEdit from './components/Character/CharacterEdit'
 
@@ -60,6 +61,10 @@ const App = () => {
           />
           <Route
             path='/characters'
+            element={<Characters user={user} msgAlert={msgAlert} />}
+          />
+          <Route
+            path='/characters/:id'
             element={<Character user={user} msgAlert={msgAlert} />}
           />
           <Route

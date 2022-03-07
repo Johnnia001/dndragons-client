@@ -59,19 +59,34 @@ export const editCharacter = (
   alignment,
   background
 ) => {
+  const charDetails = {
+    user
+  }
+  if (name !== '') {
+    charDetails.name = name
+  }
+  if (level !== '') {
+    charDetails.level = level
+  }
+  if (exp !== '') {
+    charDetails.exp = exp
+  }
+  if (charClass !== '') {
+    charDetails.charClass = charClass
+  }
+  if (race !== '') {
+    charDetails.race = race
+  }
+  if (alignment !== '') {
+    charDetails.alignment = alignment
+  }
+  if (background !== '') {
+    charDetails.background = background
+  }
   return axios.patch(
-    `${apiUrl}/characters/${id}`,
+    `${apiUrl}/characters/${id}/`,
     {
-      character: {
-        user,
-        name,
-        level,
-        exp,
-        charClass,
-        race,
-        alignment,
-        background
-      }
+      character: charDetails
     },
     {
       headers: {

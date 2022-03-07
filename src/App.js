@@ -9,6 +9,7 @@ import SignUp from './components/auth/SignUp'
 import SignIn from './components/auth/SignIn'
 import SignOut from './components/auth/SignOut'
 import ChangePassword from './components/auth/ChangePassword'
+import Home from './components/Home'
 
 import Character from './components/Character/Character'
 import CharacterCreate from './components/Character/CharacterCreate'
@@ -58,7 +59,7 @@ const App = () => {
             element={<ChangePassword msgAlert={msgAlert} user={user} />}
           />
           <Route
-            path='/characters/:id'
+            path='/characters'
             element={<Character user={user} msgAlert={msgAlert} />}
           />
           <Route
@@ -75,6 +76,7 @@ const App = () => {
               />
             }
           />
+          <Route path='/' element={<Home />} />
         </Routes>
       </main>
     </>

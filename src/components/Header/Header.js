@@ -4,7 +4,7 @@ import Navbar from 'react-bootstrap/Navbar'
 import { Link, NavLink } from 'react-router-dom'
 
 const authenticatedOptions = ({ user }) => {
-  if (user.profile) {
+  if (user) {
     return (
       <Fragment>
         <NavLink to='/change-password' className='nav-link'>
@@ -13,19 +13,8 @@ const authenticatedOptions = ({ user }) => {
         <NavLink to='/sign-out' className='nav-link'>
           Sign Out
         </NavLink>
-        <NavLink to={`characters/${user.profile._id}`} className='nav-link'>
+        <NavLink to={'/characters'} className='nav-link'>
           My characters
-        </NavLink>
-      </Fragment>
-    )
-  } else {
-    return (
-      <Fragment>
-        <NavLink to='/change-password' className='nav-link'>
-          Change Password
-        </NavLink>
-        <NavLink to='/sign-out' className='nav-link'>
-          Sign Out
         </NavLink>
         <NavLink to='/characters/create' className='nav-link'>
           Create Character

@@ -1,14 +1,21 @@
 import axios from 'axios'
 import apiUrl from '../apiConfig'
 
-export const getOneCharacter = (user, id) => {
-  return axios.get(`${apiUrl}/characters/${id}`, {
+export const indexCharacters = user => {
+  return axios.get(apiUrl + '/characters/', {
     headers: {
       Authorization: `Token ${user.token}`
     }
   })
 }
 
+export const getOneCharacter = (id, user) => {
+  return axios.get(`${apiUrl}/characters/${id}/`, {
+    headers: {
+      Authorization: `Token ${user.token}`
+    }
+  })
+}
 export const createCharacter = (
   user,
   name,
@@ -41,13 +48,29 @@ export const createCharacter = (
   )
 }
 
-export const editCharacter = (user, id, name, about) => {
+export const editCharacter = (
+  user,
+  id,
+  name,
+  level,
+  exp,
+  charClass,
+  race,
+  alignment,
+  background
+) => {
   return axios.patch(
     `${apiUrl}/characters/${id}`,
     {
       character: {
+        user,
         name,
-        about
+        level,
+        exp,
+        charClass,
+        race,
+        alignment,
+        background
       }
     },
     {

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { Navigate, Link, useParams } from 'react-router-dom'
-import { getOneCharacter, deleteCharacter } from '../../api/character'
+import { indexCharacters, deleteCharacter } from '../../api/character'
 import { Spinner } from 'react-bootstrap'
 
 import Button from 'react-bootstrap/Button'
@@ -21,7 +21,7 @@ const Character = ({ user, msgAlert }) => {
   useEffect(() => {
     const fetchCharacter = async () => {
       try {
-        await getOneCharacter(user, id).then(res => setCharacter(res.data.character))
+        await indexCharacters(user).then(res => setCharacter(res.data.character))
       } catch (error) {
         msgAlert({
           heading: 'Finding Character failed with error: ',
@@ -76,9 +76,7 @@ const Character = ({ user, msgAlert }) => {
   } else {
     return (
       <>
-        <h2>{character.name}</h2>
         <h4>Character</h4>
-        <p>{character.about}</p>
         <Button onClick={onDeleteCharacter} variant='danger' type='button'>
           Delete Character
         </Button>

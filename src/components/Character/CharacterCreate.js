@@ -62,7 +62,7 @@ const CharacterCreate = ({ user, setUser, msgAlert }) => {
   }
 
   if (shouldNavigate) {
-    return <Navigate to='/' />
+    return <Navigate to='/characters/' />
   }
 
   return (
@@ -75,37 +75,45 @@ const CharacterCreate = ({ user, setUser, msgAlert }) => {
             <Form.Label>Name</Form.Label>
             <Form.Control
               type='name'
+              name='name'
               placeholder='Character Name'
               required
               value={name}
               onChange={event => setName(event.target.value)}
             />
           </Form.Group>
-
           <Form.Group className='mb-4' controlId='level'>
             <Form.Label>Level</Form.Label>
             <Form.Control
               required
               value={level}
+              name='level'
               type='level'
               placeholder='Check with your DM what level you are starting at.'
               onChange={event => setLevel(event.target.value)}
             />
           </Form.Group>
-
           <Form.Group className='mb-4' controlId='exp'>
             <Form.Label>Experience Points</Form.Label>
             <Form.Control
               required
               value={exp}
+              name='exp'
               type='exp'
               placeholder='Check with your DM how much EXP you are starting at.'
               onChange={event => setExp(event.target.value)}
             />
           </Form.Group>
-
-          <Form.Select aria-label='charClass' selectId='charClass'>
-            <option>Class</option>
+          <Form.Control
+            aria-label='charClass'
+            as='select'
+            required
+            name='charClass'
+            value={charClass}
+            type='charClass'
+            onChange={event => setCharClass(event.target.value)}
+          >
+            <option>Class ▿</option>
             <option value='Artificer'>Artificer</option>
             <option value='Barbarian'>Barbarian</option>
             <option value='Bard'>Bard</option>
@@ -120,16 +128,17 @@ const CharacterCreate = ({ user, setUser, msgAlert }) => {
             <option value='Sorcerer'>Sorcerer</option>
             <option value='Warlock'>Warlock</option>
             <option value='Wizard'>Wizard</option>
-            <Form.Control
-              required
-              value={charClass}
-              type='charClass'
-              onChange={event => setCharClass(event.target.value)}
-            />
-          </Form.Select>
-
-          <Form.Select aria-label='Race'>
-            <option>Race</option>
+          </Form.Control>
+          <Form.Control
+            aria-label='Race'
+            required
+            as='select'
+            name='race'
+            value={race}
+            type='race'
+            onChange={event => setRace(event.target.value)}
+          >
+            <option>Race ▿</option>
             <option value='Dragon Born'>Dragon Born</option>
             <option value='Dwarf'>Dwarf</option>
             <option value='Elf'>Elf</option>
@@ -139,16 +148,18 @@ const CharacterCreate = ({ user, setUser, msgAlert }) => {
             <option value='Half-Orc'>Half-Orc</option>
             <option value='Human'>Human</option>
             <option value='Tiefling'>Tiefling</option>
-            <Form.Control
-              required
-              value={race}
-              type='race'
-              onChange={event => setRace(event.target.value)}
-            />
-          </Form.Select>
+          </Form.Control>
 
-          <Form.Select aria-label='Alignment'>
-            <option>Alignment</option>
+          <Form.Control
+            required
+            as='select'
+            name='alignment'
+            value={alignment}
+            type='alignment'
+            onChange={event => setAlignment(event.target.value)}
+            aria-label='Alignment'
+          >
+            <option>Alignment ▿</option>
             <option value='Lawful Good'>Lawful Good</option>
             <option value='Neutral Good'>Neutral Good</option>
             <option value='Chaotic Good'>Chaotic Good</option>
@@ -159,25 +170,18 @@ const CharacterCreate = ({ user, setUser, msgAlert }) => {
             <option value='Neutral Evil'>Neutral EVil</option>
             <option value='Chaotic Evil'>Chaotic Evil</option>
             <option value='Unaligned'>Unaligned</option>
-            <Form.Control
-              required
-              value={alignment}
-              type='alignment'
-              onChange={event => setAlignment(event.target.value)}
-            />
-          </Form.Select>
-
+          </Form.Control>
           <Form.Group className='mb-4' controlId='background'>
             <Form.Label>Background</Form.Label>
             <Form.Control
               required
               value={background}
+              name='background'
               type='background'
               placeholder='Gives you special bonuses based on your choice'
               onChange={event => setBackground(event.target.value)}
             />
           </Form.Group>
-
           <Button variant='primary' type='submit'>
             Submit
           </Button>

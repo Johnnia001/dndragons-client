@@ -13,7 +13,7 @@ import {
 
 const CharForm = ({ user, setUser, msgAlert }) => {
   const [page, setPage] = useState(0)
-  const [setShouldNavigate] = useState(false)
+  const [shouldNavigate, setShouldNavigate] = useState(false)
   const [character, setCharacter] = useState({
     name: '',
     level: '',
@@ -28,8 +28,8 @@ const CharForm = ({ user, setUser, msgAlert }) => {
     return <Navigate to='/' />
   }
 
-  const onCharacterCreate = async event => {
-    event.preventDefault()
+  const onCharacterCreate = async () => {
+    // event.preventDefault()
 
     try {
       await createCharacter(user, character).then(res => {
@@ -50,9 +50,9 @@ const CharForm = ({ user, setUser, msgAlert }) => {
       setCharacter('')
     }
   }
-  // if (shouldNavigate) {
-  //   return <Navigate to={'/characters'} />
-  // }
+  if (shouldNavigate) {
+    return <Navigate to={'/characters'} />
+  }
   const FormTitles = ['Character Information', 'Ability Scores']
 
   const PageDisplay = () => {
@@ -91,9 +91,9 @@ const CharForm = ({ user, setUser, msgAlert }) => {
             Prev
           </button>
           <button
-            onClick={() => {
+            onClick={async event => {
               if (page === FormTitles.length - 1) {
-                onCharacterCreate()
+                await onCharacterCreate()
                 console.log(character)
               } else {
                 setPage(currPage => currPage + 1)

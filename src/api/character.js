@@ -16,30 +16,13 @@ export const getOneCharacter = (id, user) => {
     }
   })
 }
-export const createCharacter = (
-  user,
-  name,
-  level,
-  exp,
-  charClass,
-  race,
-  alignment,
-  background
-) => {
+export const createCharacter = (user, character) => {
   return axios.post(
-    `${apiUrl}/characters/`,
+    `${apiUrl}/characters/create/`,
     {
-      character: {
-        user,
-        name,
-        level,
-        exp,
-        charClass,
-        race,
-        alignment,
-        background
-      }
+      character
     },
+
     {
       headers: {
         Authorization: `Token ${user.token}`
@@ -57,7 +40,8 @@ export const editCharacter = (
   charClass,
   race,
   alignment,
-  background
+  background,
+  strength
 ) => {
   const charDetails = {
     user
@@ -82,6 +66,9 @@ export const editCharacter = (
   }
   if (background !== '') {
     charDetails.background = background
+  }
+  if (strength !== '') {
+    charDetails.strength = strength
   }
   return axios.patch(
     `${apiUrl}/characters/${id}/`,

@@ -10,11 +10,12 @@ import SignIn from './components/auth/SignIn'
 import SignOut from './components/auth/SignOut'
 import ChangePassword from './components/auth/ChangePassword'
 import Home from './components/Home'
-
+import AbilityCreate from './components/Character/AbilityScore'
 import Character from './components/Character/Character'
 import Characters from './components/Character/Characters'
-import CharacterCreate from './components/Character/CharacterCreate'
+// import CharacterCreate from './components/Character/CharacterCreate'
 import CharacterEdit from './components/Character/CharacterEdit'
+import CharForm from './components/Form'
 
 const App = () => {
   const [user, setUser] = useState(null)
@@ -74,7 +75,17 @@ const App = () => {
           <Route
             path='/characters/create'
             element={
-              <CharacterCreate
+              <CharForm
+                user={user}
+                setUser={setUser}
+                msgAlert={msgAlert}
+              />
+            }
+          />
+          <Route
+            path='/characters/ability/:id'
+            element={
+              <AbilityCreate
                 user={user}
                 setUser={setUser}
                 msgAlert={msgAlert}

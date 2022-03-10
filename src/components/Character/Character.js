@@ -82,6 +82,7 @@ const Character = ({ user, msgAlert }) => {
           <p>{character.race}</p>
           <p>{character.alignment}</p>
           <p>{character.background}</p>
+          <p>{character.strength}</p>
 
           <Button variant='danger' onClick={onDeleteCharacter}>
             Delete Character

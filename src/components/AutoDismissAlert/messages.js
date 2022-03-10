@@ -1,7 +1,7 @@
 export const signUpSuccess =
-  'Succesfully registered! You\'ve been signed in as well.'
+  'Succesfully registered! Youve been signed in as well.'
 export const signUpFailure =
-  'Registration failed. Email may be taken, or passwords don\'t match.'
+  'Registration failed. Email may be taken, or passwords dont match.'
 export const signInSuccess = 'Welcome!'
 export const signInFailure =
   'Failed to sign in. Check your email and password and try again.'
@@ -20,4 +20,8 @@ export const characterEditFailure =
 export const characterDeleteSuccess =
   'Profile successfully deleted. Sad to see you go!'
 export const characterFindError =
-  'Uh oh. We couldn\'t find the character you were looking for'
+  'Uh oh. We couldnt find the character you were looking for'
+export const abilityCreateSuccess =
+  'Profile successfully deleted. Sad to see you go!'
+export const abilityCreateFailure =
+  'Uh oh. We couldnt find the character you were looking for'

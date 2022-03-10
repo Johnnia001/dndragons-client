@@ -1,76 +1,76 @@
-import React, { useState } from 'react'
-import { Navigate } from 'react-router-dom'
-import { createCharacter } from '../../api/character'
-
+import React from 'react'
+// import { Navigate } from 'react-router-dom'
+// import { createCharacter } from '../../api/character'
+// import CharForm form '../Form'
 import Form from 'react-bootstrap/Form'
-import Button from 'react-bootstrap/Button'
-import {
-  characterCreateSuccess,
-  characterCreateFailure
-} from '../AutoDismissAlert/messages'
+// // import Button from 'react-bootstrap/Button'
+// import {
+//   characterCreateSuccess,
+//   characterCreateFailure
+// } from '../AutoDismissAlert/messages'
 
-const CharacterCreate = ({ user, setUser, msgAlert }) => {
-  const [name, setName] = useState('')
-  const [level, setLevel] = useState('')
-  const [exp, setExp] = useState('')
-  const [charClass, setCharClass] = useState('')
-  const [race, setRace] = useState('')
-  const [alignment, setAlignment] = useState('')
-  const [background, setBackground] = useState('')
-  const [shouldNavigate, setShouldNavigate] = useState(false)
+const CharacterCreate = ({ character, setCharacter }) => {
+  // const [name, setName] = useState('')
+  // const [level, setLevel] = useState('')
+  // const [exp, setExp] = useState('')
+  // const [charClass, setCharClass] = useState('')
+  // const [race, setRace] = useState('')
+  // const [alignment, setAlignment] = useState('')
+  // const [background, setBackground] = useState('')
+  // const [setShouldNavigate] = useState(false)
 
-  if (!user) {
-    return <Navigate to='/' />
-  }
+  // if (!user) {
+  //   return <Navigate to='/' />
+  // }
 
-  const onCharacterCreate = async event => {
-    event.preventDefault()
+  // const onCharacterCreate = async event => {
+  //   event.preventDefault()
 
-    try {
-      await createCharacter(
-        user,
-        name,
-        level,
-        exp,
-        charClass,
-        race,
-        alignment,
-        background
-      ).then(res => {
-        user.character = res.data.character
-      })
-      msgAlert({
-        heading: 'Character Creation Success',
-        message: characterCreateSuccess,
-        variant: 'success'
-      })
-      setShouldNavigate(true)
-    } catch (error) {
-      msgAlert({
-        heading: 'Character Creation failed with error: ' + error.message,
-        message: characterCreateFailure,
-        variant: 'danger'
-      })
-      setName('')
-      setLevel('')
-      setExp('')
-      setCharClass('')
-      setRace('')
-      setAlignment('')
-      setBackground('')
-    }
-  }
+  //   try {
+  //     await createCharacter(
+  //       user,
+  //       name,
+  //       level,
+  //       exp,
+  //       charClass,
+  //       race,
+  //       alignment,
+  //       background
+  //     ).then(res => {
+  //       user.character = res.data.character
+  //     })
+  //     msgAlert({
+  //       heading: 'Character Creation Success',
+  //       message: characterCreateSuccess,
+  //       variant: 'success'
+  //     })
+  //     setShouldNavigate(true)
+  //   } catch (error) {
+  //     msgAlert({
+  //       heading: 'Character Creation failed with error: ' + error.message,
+  //       message: characterCreateFailure,
+  //       variant: 'danger'
+  //     })
+  //     setName('')
+  //     setLevel('')
+  //     setExp('')
+  //     setCharClass('')
+  //     setRace('')
+  //     setAlignment('')
+  //     setBackground('')
+  //   }
+  // }
 
-  if (shouldNavigate) {
-    return <Navigate to='/characters/' />
-  }
+  // if (shouldNavigate) {
+  //   return <Navigate to= {'/characters'} />
+  // }
 
   return (
     <div className='row'>
       <div className='col-sm-10 col-md-8 mx-auto mt-5'>
         <h3>Character Information</h3>
 
-        <Form onSubmit={onCharacterCreate}>
+        <Form>
           <Form.Group className='mb-3' controlId='name'>
             <Form.Label>Name</Form.Label>
             <Form.Control
@@ -78,30 +78,39 @@ const CharacterCreate = ({ user, setUser, msgAlert }) => {
               name='name'
               placeholder='Character Name'
               required
-              value={name}
-              onChange={event => setName(event.target.value)}
+              value={character.name}
+              onChange={event =>
+                setCharacter(character => ({ ...character, name: event.target.value }))
+              }
             />
           </Form.Group>
           <Form.Group className='mb-4' controlId='level'>
             <Form.Label>Level</Form.Label>
             <Form.Control
               required
-              value={level}
               name='level'
               type='level'
               placeholder='Check with your DM what level you are starting at.'
-              onChange={event => setLevel(event.target.value)}
+              value={character.level}
+              onChange={event =>
+                setCharacter(character => ({ ...character, level: event.target.value }))
+              }
             />
           </Form.Group>
           <Form.Group className='mb-4' controlId='exp'>
             <Form.Label>Experience Points</Form.Label>
             <Form.Control
               required
-              value={exp}
               name='exp'
               type='exp'
               placeholder='Check with your DM how much EXP you are starting at.'
-              onChange={event => setExp(event.target.value)}
+              value={character.exp}
+              onChange={event =>
+                setCharacter(character => ({
+                  ...character,
+                  exp: event.target.value
+                }))
+              }
             />
           </Form.Group>
           <Form.Control
@@ -109,9 +118,14 @@ const CharacterCreate = ({ user, setUser, msgAlert }) => {
             as='select'
             required
             name='charClass'
-            value={charClass}
             type='charClass'
-            onChange={event => setCharClass(event.target.value)}
+            value={character.charClass}
+            onChange={event =>
+              setCharacter(character => ({
+                ...character,
+                charClass: event.target.value
+              }))
+            }
           >
             <option>Class ▿</option>
             <option value='Artificer'>Artificer</option>
@@ -134,9 +148,14 @@ const CharacterCreate = ({ user, setUser, msgAlert }) => {
             required
             as='select'
             name='race'
-            value={race}
             type='race'
-            onChange={event => setRace(event.target.value)}
+            value={character.race}
+            onChange={event =>
+              setCharacter(character => ({
+                ...character,
+                race: event.target.value
+              }))
+            }
           >
             <option>Race ▿</option>
             <option value='Dragon Born'>Dragon Born</option>
@@ -154,10 +173,12 @@ const CharacterCreate = ({ user, setUser, msgAlert }) => {
             required
             as='select'
             name='alignment'
-            value={alignment}
             type='alignment'
-            onChange={event => setAlignment(event.target.value)}
             aria-label='Alignment'
+            value={character.alignment}
+            onChange={event =>
+              setCharacter(character => ({ ...character, alignment: event.target.value }))
+            }
           >
             <option>Alignment ▿</option>
             <option value='Lawful Good'>Lawful Good</option>
@@ -175,16 +196,18 @@ const CharacterCreate = ({ user, setUser, msgAlert }) => {
             <Form.Label>Background</Form.Label>
             <Form.Control
               required
-              value={background}
               name='background'
               type='background'
               placeholder='Gives you special bonuses based on your choice'
-              onChange={event => setBackground(event.target.value)}
+              value={character.background}
+              onChange={event =>
+                setCharacter(character => ({ ...character, background: event.target.value }))
+              }
             />
           </Form.Group>
-          <Button variant='primary' type='submit'>
-            Submit
-          </Button>
+          {/* <Button variant='primary' type='submit'>
+            Next
+  </Button> */}
         </Form>
       </div>
     </div>

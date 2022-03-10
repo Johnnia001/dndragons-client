@@ -50,9 +50,9 @@ const CharForm = ({ user, setUser, msgAlert }) => {
       setCharacter('')
     }
   }
-  if (shouldNavigate) {
-    return <Navigate to={'/characters'} />
-  }
+  // if (shouldNavigate) {
+  //   return <Navigate to={'/characters'} />
+  // }
   const FormTitles = ['Character Information', 'Ability Scores']
 
   const PageDisplay = () => {

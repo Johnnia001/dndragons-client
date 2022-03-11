@@ -3,7 +3,7 @@ import CharacterCreate from './Character/CharacterCreate'
 import AbilityCreate from './Character/AbilityScore'
 import { Navigate } from 'react-router-dom'
 import { createCharacter } from '../api/character'
-
+import SpiCreate from './Character/SavingProfInsp'
 // import Form from 'react-bootstrap/Form'
 // import Button from 'react-bootstrap/Button'
 import {
@@ -22,7 +22,16 @@ const CharForm = ({ user, setUser, msgAlert }) => {
     race: '',
     alignment: '',
     background: '',
-    strength: ''
+    strength: '',
+    dexterity: '',
+    constitution: '',
+    intelligence: '',
+    wisdom: '',
+    charisma: '',
+    savingThrows: {
+      strength: false,
+      dexterity: false
+    }
   })
   if (!user) {
     return <Navigate to='/' />
@@ -53,7 +62,11 @@ const CharForm = ({ user, setUser, msgAlert }) => {
   if (shouldNavigate) {
     return <Navigate to={'/characters'} />
   }
-  const FormTitles = ['Character Information', 'Ability Scores']
+  const FormTitles = [
+    'Character Information',
+    'Ability Scores',
+    'Saving Throws & Proficiency'
+  ]
 
   const PageDisplay = () => {
     if (page === 0) {
@@ -62,6 +75,8 @@ const CharForm = ({ user, setUser, msgAlert }) => {
       )
     } else if (page === 1) {
       return <AbilityCreate character={character} setCharacter={setCharacter} />
+    } else if (page === 2) {
+      return <SpiCreate character={character} setCharacter={setCharacter} />
     } else {
       return <h1>hi</h1>
     }

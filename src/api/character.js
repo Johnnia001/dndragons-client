@@ -17,6 +17,7 @@ export const getOneCharacter = (id, user) => {
   })
 }
 export const createCharacter = (user, character) => {
+  console.log(character)
   return axios.post(
     `${apiUrl}/characters/create/`,
     {
@@ -41,11 +42,22 @@ export const editCharacter = (
   race,
   alignment,
   background,
-  strength
+  strength,
+  dexterity,
+  constitution,
+  intelligence,
+  wisdom,
+  charisma,
+  savingThrows
 ) => {
   const charDetails = {
-    user
+    user,
+    savingThrows
   }
+  // if ( !== '') {
+  // charDetails. =
+  //     }
+
   if (name !== '') {
     charDetails.name = name
   }
@@ -70,6 +82,22 @@ export const editCharacter = (
   if (strength !== '') {
     charDetails.strength = strength
   }
+  if (dexterity !== '') {
+    charDetails.dexterity = dexterity
+  }
+  if (constitution !== '') {
+    charDetails.constitution = constitution
+  }
+  if (intelligence !== '') {
+    charDetails.intelligence = intelligence
+  }
+  if (wisdom !== '') {
+    charDetails.wisdom = wisdom
+  }
+  if (charisma !== '') {
+    charDetails.charisma = charisma
+  }
+  console.log(charDetails)
   return axios.patch(
     `${apiUrl}/characters/${id}/`,
     {

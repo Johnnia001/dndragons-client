@@ -1,58 +1,9 @@
 import React from 'react'
-// import { Navigate } from 'react-router-dom'
-// import { createAbility } from '../../api/ability'
 
 import Form from 'react-bootstrap/Form'
-// import Button from 'react-bootstrap/Button'
 import FloatingLabel from 'react-bootstrap/FloatingLabel'
 
 const AbilityCreate = ({ character, setCharacter }) => {
-  // const [strength, setStrength] = useState('')
-  /* const [dexterity, setDexterity] = useState('')
-  const [constitution, setConstitution] = useState('')
-  const [intelligence, setIntelligence] = useState('')
-  const [wisdom, setWisdom] = useState('')
-  const [charisma, setCharisma] = useState('') */
-  // const [shouldNavigate, setShouldNavigate] = useState(false)
-  // if (!user) {
-  //   return <Navigate to='/' />
-  // }
-
-  // const AbilityCreate = async event => {
-  //  event.preventDefault()
-
-  //   try {
-  //     await createAbility(
-  //       user,
-  //       strength
-  //       /* dexterity,
-  //       constitution,
-  //       intelligence,
-  //       wisdom,
-  //       charisma */
-  //     ).then(res => {
-  //       user.ability = res.data.ability
-  //     })
-  //     msgAlert({
-  //       heading: 'Ability Creation Success',
-  //       message: abilityCreateSuccess,
-  //       variant: 'success'
-  //     })
-  //     setShouldNavigate(true)
-  //   } catch (error) {
-  //     msgAlert({
-  //       heading: 'Ability Creation failed with error: ' + error.message,
-  //       message: abilityCreateFailure,
-  //       variant: 'danger'
-  //     })
-  //     setStrength('')
-  //   }
-  // }
-
-  // if (shouldNavigate) {
-  //   return <Navigate to='/' />
-  // }
-
   return (
     <div className='row'>
       <div className='col-sm-10 col-md-8 mx-auto mt-5'>
@@ -63,10 +14,7 @@ const AbilityCreate = ({ character, setCharacter }) => {
         </h2>
 
         <Form>
-          <FloatingLabel
-            controlId='floatingSelectGrid'
-            label='Works with selects'
-          >
+          <FloatingLabel controlId='floatingSelectGrid' label='Strength'>
             <Form.Control
               as='select'
               type='strength'
@@ -74,7 +22,10 @@ const AbilityCreate = ({ character, setCharacter }) => {
               required
               value={character.strength}
               onChange={event =>
-                setCharacter(character => ({ ...character, strength: event.target.value }))
+                setCharacter(character => ({
+                  ...character,
+                  strength: event.target.value
+                }))
               }
             >
               <option>Strength</option>
@@ -110,9 +61,255 @@ const AbilityCreate = ({ character, setCharacter }) => {
               </option>
             </Form.Control>
           </FloatingLabel>
-          {/* <Button variant='primary' type='submit'>
-            Submit
-  </Button> */}
+
+          <Form>
+            <FloatingLabel controlId='floatingSelectGrid' label='Dexterity'>
+              <Form.Control
+                as='select'
+                type='dexterity'
+                aria-label='Alignment'
+                required
+                value={character.dexterity}
+                onChange={event =>
+                  setCharacter(character => ({
+                    ...character,
+                    dexterity: event.target.value
+                  }))
+                }
+              >
+                <option>Dexterity</option>
+                <option value='Ability Score: 2-3 Modifier: -4'>
+                  Ability Score: 2-3 Modifier: -4
+                </option>
+                <option value='Ability Score: 4-5 Modifier: -3'>
+                  Ability Score: 4-5 Modifier: -3
+                </option>
+                <option value='Ability Score: 6-7 Modifier: -2'>
+                  Ability Score: 6-7 Modifier: -2
+                </option>
+                <option value='Ability Score: 8-9 Modifier: -1'>
+                  Ability Score: 8-9 Modifier: -1
+                </option>
+                <option value='Ability Score: 10-11 Modifier: +0'>
+                  Ability Score: 10-11 Modifier: +0
+                </option>
+                <option value='Ability Score: 12-13 Modifier: +1'>
+                  Ability Score:Ability Score: 12-13 Modifier: +1
+                </option>
+                <option value='Ability Score: 14-15 Modifier: +2'>
+                  Ability Score: 14-15 Modifier: +2
+                </option>
+                <option value='Ability Score: 16-17 Modifier: +3'>
+                  Ability Score: 16-17 Modifier: +3
+                </option>
+                <option value='Ability Score: 18-19 Modifier: +4'>
+                  Ability Score: 18-19 Modifier: +4
+                </option>
+                <option value='Ability Score: 20+ Modifier: +5'>
+                  Ability Score: 20+ Modifier: +5
+                </option>
+              </Form.Control>
+            </FloatingLabel>
+          </Form>
+        </Form>
+
+        <Form>
+          <FloatingLabel controlId='floatingSelectGrid' label='Constitution'>
+            <Form.Control
+              as='select'
+              type='constitution'
+              aria-label='Alignment'
+              required
+              value={character.constitution}
+              onChange={event =>
+                setCharacter(character => ({
+                  ...character,
+                  constitution: event.target.value
+                }))
+              }
+            >
+              <option>Constitution</option>
+              <option value='Ability Score: 2-3 Modifier: -4'>
+                Ability Score: 2-3 Modifier: -4
+              </option>
+              <option value='Ability Score: 4-5 Modifier: -3'>
+                Ability Score: 4-5 Modifier: -3
+              </option>
+              <option value='Ability Score: 6-7 Modifier: -2'>
+                Ability Score: 6-7 Modifier: -2
+              </option>
+              <option value='Ability Score: 8-9 Modifier: -1'>
+                Ability Score: 8-9 Modifier: -1
+              </option>
+              <option value='Ability Score: 10-11 Modifier: +0'>
+                Ability Score: 10-11 Modifier: +0
+              </option>
+              <option value='Ability Score: 12-13 Modifier: +1'>
+                Ability Score:Ability Score: 12-13 Modifier: +1
+              </option>
+              <option value='Ability Score: 14-15 Modifier: +2'>
+                Ability Score: 14-15 Modifier: +2
+              </option>
+              <option value='Ability Score: 16-17 Modifier: +3'>
+                Ability Score: 16-17 Modifier: +3
+              </option>
+              <option value='Ability Score: 18-19 Modifier: +4'>
+                Ability Score: 18-19 Modifier: +4
+              </option>
+              <option value='Ability Score: 20+ Modifier: +5'>
+                Ability Score: 20+ Modifier: +5
+              </option>
+            </Form.Control>
+          </FloatingLabel>
+        </Form>
+
+        <Form>
+          <FloatingLabel controlId='floatingSelectGrid' label='Intelligence'>
+            <Form.Control
+              as='select'
+              type='intelligence'
+              aria-label='Alignment'
+              required
+              value={character.intelligence}
+              onChange={event =>
+                setCharacter(character => ({
+                  ...character,
+                  intelligence: event.target.value
+                }))
+              }
+            >
+              <option>Intelligence</option>
+              <option value='Ability Score: 2-3 Modifier: -4'>
+                Ability Score: 2-3 Modifier: -4
+              </option>
+              <option value='Ability Score: 4-5 Modifier: -3'>
+                Ability Score: 4-5 Modifier: -3
+              </option>
+              <option value='Ability Score: 6-7 Modifier: -2'>
+                Ability Score: 6-7 Modifier: -2
+              </option>
+              <option value='Ability Score: 8-9 Modifier: -1'>
+                Ability Score: 8-9 Modifier: -1
+              </option>
+              <option value='Ability Score: 10-11 Modifier: +0'>
+                Ability Score: 10-11 Modifier: +0
+              </option>
+              <option value='Ability Score: 12-13 Modifier: +1'>
+                Ability Score:Ability Score: 12-13 Modifier: +1
+              </option>
+              <option value='Ability Score: 14-15 Modifier: +2'>
+                Ability Score: 14-15 Modifier: +2
+              </option>
+              <option value='Ability Score: 16-17 Modifier: +3'>
+                Ability Score: 16-17 Modifier: +3
+              </option>
+              <option value='Ability Score: 18-19 Modifier: +4'>
+                Ability Score: 18-19 Modifier: +4
+              </option>
+              <option value='Ability Score: 20+ Modifier: +5'>
+                Ability Score: 20+ Modifier: +5
+              </option>
+            </Form.Control>
+          </FloatingLabel>
+        </Form>
+        <Form>
+          <FloatingLabel controlId='floatingSelectGrid' label='Wisdom'>
+            <Form.Control
+              as='select'
+              type='wisdom'
+              aria-label='Alignment'
+              required
+              value={character.wisdom}
+              onChange={event =>
+                setCharacter(character => ({
+                  ...character,
+                  wisdom: event.target.value
+                }))
+              }
+            >
+              <option>Wisdom</option>
+              <option value='Ability Score: 2-3 Modifier: -4'>
+                Ability Score: 2-3 Modifier: -4
+              </option>
+              <option value='Ability Score: 4-5 Modifier: -3'>
+                Ability Score: 4-5 Modifier: -3
+              </option>
+              <option value='Ability Score: 6-7 Modifier: -2'>
+                Ability Score: 6-7 Modifier: -2
+              </option>
+              <option value='Ability Score: 8-9 Modifier: -1'>
+                Ability Score: 8-9 Modifier: -1
+              </option>
+              <option value='Ability Score: 10-11 Modifier: +0'>
+                Ability Score: 10-11 Modifier: +0
+              </option>
+              <option value='Ability Score: 12-13 Modifier: +1'>
+                Ability Score:Ability Score: 12-13 Modifier: +1
+              </option>
+              <option value='Ability Score: 14-15 Modifier: +2'>
+                Ability Score: 14-15 Modifier: +2
+              </option>
+              <option value='Ability Score: 16-17 Modifier: +3'>
+                Ability Score: 16-17 Modifier: +3
+              </option>
+              <option value='Ability Score: 18-19 Modifier: +4'>
+                Ability Score: 18-19 Modifier: +4
+              </option>
+              <option value='Ability Score: 20+ Modifier: +5'>
+                Ability Score: 20+ Modifier: +5
+              </option>
+            </Form.Control>
+          </FloatingLabel>
+        </Form>
+
+        <Form>
+          <FloatingLabel controlId='floatingSelectGrid' label='Charisma'>
+            <Form.Control
+              as='select'
+              type='charisma'
+              aria-label='Alignment'
+              required
+              value={character.charisma}
+              onChange={event =>
+                setCharacter(character => ({
+                  ...character,
+                  charisma: event.target.value
+                }))
+              }
+            >
+              <option>Charisma</option>
+              <option value='Ability Score: 2-3 Modifier: -4'>
+                Ability Score: 2-3 Modifier: -4
+              </option>
+              <option value='Ability Score: 4-5 Modifier: -3'>
+                Ability Score: 4-5 Modifier: -3
+              </option>
+              <option value='Ability Score: 6-7 Modifier: -2'>
+                Ability Score: 6-7 Modifier: -2
+              </option>
+              <option value='Ability Score: 8-9 Modifier: -1'>
+                Ability Score: 8-9 Modifier: -1
+              </option>
+              <option value='Ability Score: 10-11 Modifier: +0'>
+                Ability Score: 10-11 Modifier: +0
+              </option>
+              <option value='Ability Score: 12-13 Modifier: +1'>
+                Ability Score:Ability Score: 12-13 Modifier: +1
+              </option>
+              <option value='Ability Score: 14-15 Modifier: +2'>
+                Ability Score: 14-15 Modifier: +2
+              </option>
+              <option value='Ability Score: 16-17 Modifier: +3'>
+                Ability Score: 16-17 Modifier: +3
+              </option>
+              <option value='Ability Score: 18-19 Modifier: +4'>
+                Ability Score: 18-19 Modifier: +4
+              </option>
+              <option value='Ability Score: 20+ Modifier: +5'>
+                Ability Score: 20+ Modifier: +5
+              </option>
+            </Form.Control>
+          </FloatingLabel>
         </Form>
       </div>
     </div>

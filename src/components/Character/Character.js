@@ -75,14 +75,24 @@ const Character = ({ user, msgAlert }) => {
     return (
       <div className='row'>
         <div className='col-sm-10 col-md-8 mx-auto mt-5'>
-          <h3>{character.name}</h3>
+          <h2>{character.name}</h2>
           <p>Level: {character.level}</p>
           <p>EXP:{character.exp}</p>
           <p>{character.charClass}</p>
           <p>{character.race}</p>
           <p>{character.alignment}</p>
           <p>{character.background}</p>
-          <p>{character.strength}</p>
+          <h3>Ability Scores</h3>
+          <p>Strength: {character.strength}</p>
+          <p>Dexterity: {character.dexterity}</p>
+          <p>Constitution: {character.constitution}</p>
+          <p>Intelligence: {character.intelligence}</p>
+          <p>Wisdom: {character.wisdom}</p>
+          <p>Charisma: {character.charisma}</p>
+          <p>
+            Saving Throws:{' '}
+            {Object.keys(character.savingThrows).join(', ')}
+          </p>
 
           <Button variant='danger' onClick={onDeleteCharacter}>
             Delete Character

@@ -10,61 +10,6 @@ import Form from 'react-bootstrap/Form'
 // } from '../AutoDismissAlert/messages'
 
 const CharacterCreate = ({ character, setCharacter }) => {
-  // const [name, setName] = useState('')
-  // const [level, setLevel] = useState('')
-  // const [exp, setExp] = useState('')
-  // const [charClass, setCharClass] = useState('')
-  // const [race, setRace] = useState('')
-  // const [alignment, setAlignment] = useState('')
-  // const [background, setBackground] = useState('')
-  // const [setShouldNavigate] = useState(false)
-
-  // if (!user) {
-  //   return <Navigate to='/' />
-  // }
-
-  // const onCharacterCreate = async event => {
-  //   event.preventDefault()
-
-  //   try {
-  //     await createCharacter(
-  //       user,
-  //       name,
-  //       level,
-  //       exp,
-  //       charClass,
-  //       race,
-  //       alignment,
-  //       background
-  //     ).then(res => {
-  //       user.character = res.data.character
-  //     })
-  //     msgAlert({
-  //       heading: 'Character Creation Success',
-  //       message: characterCreateSuccess,
-  //       variant: 'success'
-  //     })
-  //     setShouldNavigate(true)
-  //   } catch (error) {
-  //     msgAlert({
-  //       heading: 'Character Creation failed with error: ' + error.message,
-  //       message: characterCreateFailure,
-  //       variant: 'danger'
-  //     })
-  //     setName('')
-  //     setLevel('')
-  //     setExp('')
-  //     setCharClass('')
-  //     setRace('')
-  //     setAlignment('')
-  //     setBackground('')
-  //   }
-  // }
-
-  // if (shouldNavigate) {
-  //   return <Navigate to= {'/characters'} />
-  // }
-
   return (
     <div className='row'>
       <div className='col-sm-10 col-md-8 mx-auto mt-5'>

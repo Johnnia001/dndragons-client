@@ -8,13 +8,16 @@ const AbilityCreate = ({ character, setCharacter }) => {
     <div className='row'>
       <div className='col-sm-10 col-md-8 mx-auto mt-5'>
         <h3>Ability Scores</h3>
-        <h2>
+        <p>
           Your character’s ability scores represent how well your character
           performs in six distinct areas
-        </h2>
+        </p>
 
         <Form>
-          <FloatingLabel controlId='floatingSelectGrid' label='Strength'>
+          <FloatingLabel
+            controlId='floatingSelectGrid'
+            label='Strength'
+          >
             <Form.Control
               as='select'
               type='strength'
@@ -28,7 +31,7 @@ const AbilityCreate = ({ character, setCharacter }) => {
                 }))
               }
             >
-              <option>Strength</option>
+              <option className='label'>Strength</option>
               <option value='Ability Score: 2-3 Modifier: -4'>
                 Ability Score: 2-3 Modifier: -4
               </option>

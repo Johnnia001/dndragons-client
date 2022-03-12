@@ -17,7 +17,7 @@ const CharacterCreate = ({ character, setCharacter }) => {
 
         <Form>
           <Form.Group className='mb-3' controlId='name'>
-            <Form.Label>Name</Form.Label>
+            <Form.Label className='label'>Name</Form.Label>
             <Form.Control
               type='name'
               name='name'
@@ -25,12 +25,15 @@ const CharacterCreate = ({ character, setCharacter }) => {
               required
               value={character.name}
               onChange={event =>
-                setCharacter(character => ({ ...character, name: event.target.value }))
+                setCharacter(character => ({
+                  ...character,
+                  name: event.target.value
+                }))
               }
             />
           </Form.Group>
           <Form.Group className='mb-4' controlId='level'>
-            <Form.Label>Level</Form.Label>
+            <Form.Label className='label'>Level</Form.Label>
             <Form.Control
               required
               name='level'
@@ -38,12 +41,15 @@ const CharacterCreate = ({ character, setCharacter }) => {
               placeholder='Check with your DM what level you are starting at.'
               value={character.level}
               onChange={event =>
-                setCharacter(character => ({ ...character, level: event.target.value }))
+                setCharacter(character => ({
+                  ...character,
+                  level: event.target.value
+                }))
               }
             />
           </Form.Group>
           <Form.Group className='mb-4' controlId='exp'>
-            <Form.Label>Experience Points</Form.Label>
+            <Form.Label className='label'>Experience Points</Form.Label>
             <Form.Control
               required
               name='exp'
@@ -122,7 +128,10 @@ const CharacterCreate = ({ character, setCharacter }) => {
             aria-label='Alignment'
             value={character.alignment}
             onChange={event =>
-              setCharacter(character => ({ ...character, alignment: event.target.value }))
+              setCharacter(character => ({
+                ...character,
+                alignment: event.target.value
+              }))
             }
           >
             <option>Alignment ▿</option>
@@ -138,7 +147,7 @@ const CharacterCreate = ({ character, setCharacter }) => {
             <option value='Unaligned'>Unaligned</option>
           </Form.Control>
           <Form.Group className='mb-4' controlId='background'>
-            <Form.Label>Background</Form.Label>
+            <Form.Label className='label'>Background</Form.Label>
             <Form.Control
               required
               name='background'
@@ -146,7 +155,10 @@ const CharacterCreate = ({ character, setCharacter }) => {
               placeholder='Gives you special bonuses based on your choice'
               value={character.background}
               onChange={event =>
-                setCharacter(character => ({ ...character, background: event.target.value }))
+                setCharacter(character => ({
+                  ...character,
+                  background: event.target.value
+                }))
               }
             />
           </Form.Group>

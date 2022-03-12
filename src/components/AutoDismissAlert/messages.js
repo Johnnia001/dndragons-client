@@ -5,23 +5,19 @@ export const signUpFailure =
 export const signInSuccess = 'Welcome!'
 export const signInFailure =
   'Failed to sign in. Check your email and password and try again.'
-export const signOutSuccess = 'Come back soon!'
+export const signOutSuccess = 'Take a long rest!'
 export const changePasswordSuccess = 'Password changed successfully!'
 export const changePasswordFailure =
   'Failed to change passwords. Check your old password and try again.'
 export const characterCreateSuccess =
-  'Profile created successfully! Get busy chatting!'
+  'Character created successfully! Roll for initiative!'
 export const characterCreateFailure =
   'Failed to create a character. Please check your inputs and try again.'
 export const characterEditSuccess =
-  'Profile successfully updated! Get busy chatting!'
+  'Character successfully updated! Roll for initiative!'
 export const characterEditFailure =
   'Failed to update your character. Please check inputs and try again.'
 export const characterDeleteSuccess =
-  'Profile successfully deleted. Sad to see you go!'
+  'Character successfully deleted. Sad to see you go!'
 export const characterFindError =
-  'Uh oh. We couldnt find the character you were looking for'
-export const abilityCreateSuccess =
-  'Profile successfully deleted. Sad to see you go!'
-export const abilityCreateFailure =
   'Uh oh. We couldnt find the character you were looking for'

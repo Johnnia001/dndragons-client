@@ -13,7 +13,7 @@ const SignUp = ({ msgAlert, setUser }) => {
   const [passwordConfirmation, setPasswordConfirmation] = useState('')
   const [shouldNavigate, setShouldNavigate] = useState(false)
 
-  const onSignUp = async (event) => {
+  const onSignUp = async event => {
     event.preventDefault()
 
     try {
@@ -48,7 +48,7 @@ const SignUp = ({ msgAlert, setUser }) => {
         <h3>Sign Up</h3>
         <Form onSubmit={onSignUp}>
           <Form.Group controlId='email'>
-            <Form.Label>Email address</Form.Label>
+            <Form.Label className='label'>Email address</Form.Label>
             <Form.Control
               required
               type='email'
@@ -59,7 +59,7 @@ const SignUp = ({ msgAlert, setUser }) => {
             />
           </Form.Group>
           <Form.Group controlId='password'>
-            <Form.Label>Password</Form.Label>
+            <Form.Label className='label'>Password</Form.Label>
             <Form.Control
               required
               name='password'
@@ -70,7 +70,7 @@ const SignUp = ({ msgAlert, setUser }) => {
             />
           </Form.Group>
           <Form.Group controlId='passwordConfirmation'>
-            <Form.Label>Password Confirmation</Form.Label>
+            <Form.Label className='label'>Password Confirmation</Form.Label>
             <Form.Control
               required
               name='passwordConfirmation'
@@ -80,7 +80,9 @@ const SignUp = ({ msgAlert, setUser }) => {
               onChange={event => setPasswordConfirmation(event.target.value)}
             />
           </Form.Group>
-          <Button className='mt-2' variant='primary' type='submit'>Submit</Button>
+          <Button className='start-btn' type='submit'>
+            Submit
+          </Button>
         </Form>
       </div>
     </div>

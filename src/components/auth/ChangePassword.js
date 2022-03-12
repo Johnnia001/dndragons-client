@@ -2,7 +2,10 @@ import React, { useState } from 'react'
 import { Navigate } from 'react-router-dom'
 
 import { changePassword } from '../../api/auth'
-import { changePasswordSuccess, changePasswordFailure } from '../AutoDismissAlert/messages'
+import {
+  changePasswordSuccess,
+  changePasswordFailure
+} from '../AutoDismissAlert/messages'
 
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
@@ -12,7 +15,7 @@ const ChangePassword = ({ msgAlert, user }) => {
   const [newPassword, setNewPassword] = useState('')
   const [shouldNavigate, setShouldNavigate] = useState(false)
 
-  const onChangePassword = async (event) => {
+  const onChangePassword = async event => {
     event.preventDefault()
 
     try {
@@ -41,10 +44,13 @@ const ChangePassword = ({ msgAlert, user }) => {
   return (
     <div className='row'>
       <div className='col-sm-10 col-md-8 mx-auto mt-5'>
-        <h3>Change Password</h3>
+        <h3>Change Password</h3>;
+        <div className='w-sword'>
+          <img className='sword' src={require('../img/sword.gif').default} />
+        </div>
         <Form onSubmit={onChangePassword}>
           <Form.Group controlId='oldPassword'>
-            <Form.Label>Old password</Form.Label>
+            <Form.Label className='label'>Old password</Form.Label>
             <Form.Control
               required
               name='oldPassword'
@@ -55,18 +61,19 @@ const ChangePassword = ({ msgAlert, user }) => {
             />
           </Form.Group>
           <Form.Group controlId='newPassword'>
-            <Form.Label>New Password</Form.Label>
+            <Form.Label className='label'>New Password</Form.Label>
             <Form.Control
               required
               name='newPassword'
               value={newPassword}
               type='password'
               placeholder='New Password'
-              onChange={event => setNewPassword(event.target.value)
-              }
+              onChange={event => setNewPassword(event.target.value)}
             />
           </Form.Group>
-          <Button className='mt-2' variant='primary' type='submit'>Submit</Button>
+          <Button className='start-btn' type='submit'>
+            Submit
+          </Button>
         </Form>
       </div>
     </div>

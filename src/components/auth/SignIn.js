@@ -12,7 +12,7 @@ const SignIn = ({ msgAlert, setUser }) => {
   const [password, setPassword] = useState('')
   const [shouldNavigate, setShouldNavigate] = useState(false)
 
-  const onSignIn = async (event) => {
+  const onSignIn = async event => {
     event.preventDefault()
 
     try {
@@ -46,7 +46,7 @@ const SignIn = ({ msgAlert, setUser }) => {
         <h3>Sign In</h3>
         <Form onSubmit={onSignIn}>
           <Form.Group controlId='email'>
-            <Form.Label>Email address</Form.Label>
+            <Form.Label className='label'>Email address</Form.Label>
             <Form.Control
               required
               type='email'
@@ -57,18 +57,20 @@ const SignIn = ({ msgAlert, setUser }) => {
             />
           </Form.Group>
           <Form.Group controlId='password'>
-            <Form.Label>Password</Form.Label>
+            <Form.Label className='label'>Password</Form.Label>
             <Form.Control
+              className= 'input'
               required
               name='password'
               value={password}
               type='password'
               placeholder='Password'
-              onChange={event => setPassword(event.target.value)
-              }
+              onChange={event => setPassword(event.target.value)}
             />
           </Form.Group>
-          <Button className='mt-2' variant='primary' type='submit'>Submit</Button>
+          <Button className='start-btn' type='submit'>
+            Submit
+          </Button>
         </Form>
       </div>
     </div>

@@ -1,0 +1,136 @@
+@import '~bootstrap/scss/bootstrap';
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+.title {
+    font-family: 'Press Start 2P', cursive;
+    display: flex;
+
+    text-align: center;
+    flex-direction: column;
+    align-items: flex-start;
+    min-height: 100vh;
+    padding: 50px;
+    color: limegreen;
+
+}
+.flex-container{
+display: flex;
+  align-items: flex-start;
+}
+.w-hat{
+    justify-content: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+.dice {
+   display: flex;
+flex-direction: row;
+max-width: 40vh;
+}
+.w-sword{
+  display: flex;
+    align-items:center;
+}
+
+ body{
+     background-color: black;
+ }
+.nav {
+    font-family: 'Press Start 2P', cursive;
+    background-color: limegreen;
+    text-decoration:black;
+    text-size-adjust: 2px;
+}
+
+
+h1 {
+    font-family: 'Press Start 2P', cursive;
+    padding: 50px;
+    color: limegreen;
+}
+h2 {
+  font-family: 'Press Start 2P', cursive;
+  padding: 50px;
+  color: limegreen;
+}
+
+
+h3 {
+    font-family: 'Press Start 2P', cursive;
+    padding: 10px;
+
+
+color: limegreen;
+
+}
+h4 {
+  font-family: 'Press Start 2P', cursive;
+
+  color: limegreen;
+}
+h5 {
+  font-family: 'Press Start 2P', cursive;
+
+  color: limegreen;
+}
+
+p {
+  font-family: 'Press Start 2P', cursive;
+  color: limegreen;
+}
+ul {
+  font-family: 'Press Start 2P', cursive;
+  padding: 50px;
+  color: limegreen;
+}
+
+Form {
+    border: 2px solid limegreen;
+border-radius: 4px;
+
+}
+
+a.nav-link {
+    text-size-adjust: 5px;
+}
+
+
+.label{
+    color: limegreen;
+}
+.form-control {
+    background-color: black;
+    color: limegreen;
+    border: 1px solid limegreen;
+
+}
+
+
+.form-check-input {
+  background-color: #050505;
+  border-color: #00ff00;
+}
+
+.form-check-input:checked {
+  background-color: #008800;
+  border-color: #00ff00;
+}
+input{
+background-color: -internal-light-dark(rgb(7, 7, 7), rgb(77, 233, 103));
+}
+.start-btn {
+  text-align: center;
+  display: inline-block;
+  margin: 5px;
+  font-weight: bold;
+  padding: 10px 0 10px 10px;
+  background-color: lightgray;
+  text-shadow: -1px -1px black, 1px 1px white;
+  color: gray;
+  -webkit-border-radius: 7px;
+  -moz-border-radius: 7px;
+  -o-border-radius: 7px;
+  border-radius: 7px;
+  box-shadow: 0 0.2em gray;
+  cursor: pointer;
+}

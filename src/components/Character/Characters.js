@@ -79,7 +79,7 @@ const Characters = ({ user, msgAlert }) => {
     ))
     return (
       <>
-        <h4>Characters</h4>
+        <h1>Characters</h1>
         <div className='col-sm-10 col-md-8 mx-auto mt-5'>
           <ul>{charactersList}</ul>
         </div>

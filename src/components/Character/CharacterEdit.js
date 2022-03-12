@@ -20,22 +20,17 @@ const CharacterEdit = ({ user, msgAlert }) => {
   const [background, setBackground] = useState('')
   const [updated, setUpdated] = useState(false)
   const { id } = useParams()
-  const [character, setCharacter] = useState({
-    savingThrows: {
-      strength: false,
-      dexterity: false
-    }
-  })
+  const [character, setCharacter] = useState({})
+  const [prof, setProf] = useState('')
   const [strength, setStrength] = useState('')
   const [dexterity, setDexterity] = useState('')
   const [constitution, setConstitution] = useState('')
   const [intelligence, setIntelligence] = useState('')
   const [wisdom, setWisdom] = useState('')
   const [charisma, setCharisma] = useState('')
-  const [savingThrows, setSavingThrows] = useState({
-    strength: false,
-    dexterity: false
-  })
+  const [savingThrows, setSavingThrows] = useState(
+    '-STR -DEX -CON -INT -WIS -CHA'
+  )
 
   if (!user) {
     return <Navigate to='/' />
@@ -80,7 +75,8 @@ const CharacterEdit = ({ user, msgAlert }) => {
         intelligence,
         wisdom,
         charisma,
-        character.savingThrows
+        prof,
+        savingThrows
       )
       msgAlert({
         heading: 'Character Edit Success',
@@ -107,10 +103,8 @@ const CharacterEdit = ({ user, msgAlert }) => {
       setIntelligence('')
       setWisdom('')
       setCharisma('')
-      setSavingThrows({
-        strength: false,
-        dexterity: false
-      })
+      setProf('')
+      setSavingThrows('-STR -DEX -CON -INT -WIS -CHA')
     }
   }
 
@@ -121,11 +115,13 @@ const CharacterEdit = ({ user, msgAlert }) => {
   return (
     <div className='row'>
       <div className='col-sm-10 col-md-8 mx-auto mt-5'>
-        <h3>Edit Your Character</h3>
-
+        <h2>Edit Your Character</h2>
+        {/* CHARACTER INFO   */}
+        <br />
+        <h4>Character Info</h4>
         <Form onSubmit={onCharacterEdit}>
           <Form.Group className='mb-3' controlId='name'>
-            <Form.Label>Name</Form.Label>
+            <Form.Label className='label'>Name</Form.Label>
             <Form.Control
               type='name'
               name='name'
@@ -135,7 +131,7 @@ const CharacterEdit = ({ user, msgAlert }) => {
             />
           </Form.Group>
           <Form.Group className='mb-4' controlId='level'>
-            <Form.Label>Level</Form.Label>
+            <Form.Label className='label'>Level</Form.Label>
             <Form.Control
               value={level}
               name='level'
@@ -145,7 +141,7 @@ const CharacterEdit = ({ user, msgAlert }) => {
             />
           </Form.Group>
           <Form.Group className='mb-4' controlId='exp'>
-            <Form.Label>Experience Points</Form.Label>
+            <Form.Label className='label'>Experience Points</Form.Label>
             <Form.Control
               value={exp}
               name='exp'
@@ -218,7 +214,7 @@ const CharacterEdit = ({ user, msgAlert }) => {
             <option value='Unaligned'>Unaligned</option>
           </Form.Control>
           <Form.Group className='mb-4' controlId='background'>
-            <Form.Label>Background</Form.Label>
+            <Form.Label className='label'>Background</Form.Label>
             <Form.Control
               value={background}
               name='background'
@@ -227,10 +223,14 @@ const CharacterEdit = ({ user, msgAlert }) => {
               onChange={event => setBackground(event.target.value)}
             />
           </Form.Group>
-          <Button variant='primary' type='submit'>
+          <Button className='start-btn' type='submit'>
             Submit
           </Button>
-          <h3>Ability Scores</h3>
+          <br />
+
+          {/*  ABILITY SCORES   */}
+
+          <h4>Ability Scores</h4>
           <FloatingLabel controlId='floatingSelectGrid' label='Strength'>
             <Form.Control
               as='select'
@@ -513,37 +513,105 @@ const CharacterEdit = ({ user, msgAlert }) => {
               </option>
             </Form.Control>
           </FloatingLabel>
-          <Button variant='primary' type='submit'>
+          <Button className='start-btn' type='submit'>
             Submit
           </Button>
-          <h3>Saving Throws</h3>
-          <Form.Label>Saving Throws</Form.Label>
+          <br />
+
+          {/* PROFICIENCY  SAVING THROWS   */}
+          <h4>Proficiency</h4>
+          <Form.Group className='mb-4' controlId='prof'>
+            <Form.Label className='label'>Proficiency Bonus</Form.Label>
+            <Form.Control
+              value={prof}
+              name='prof'
+              type='prof'
+              placeholder='Proficiency Bonus'
+              onChange={event => setProf(event.target.value)}
+            />
+          </Form.Group>
+
+          <h4>Saving Throws</h4>
+          <Form.Label className='label'>Saving Throws</Form.Label>
           <Form.Switch
+            className='label'
             type='switch'
             name='strength'
             label='strength'
-            checked={savingThrows.strength}
-            onChange={event =>
-              setSavingThrows({
-                ...savingThrows,
-                strength: event.target.checked
-              })
-            }
+            checked={savingThrows.includes('+STR')}
+            onChange={event => {
+              const [oldStr, newStr] = event.target.checked
+                ? ['-STR', '+STR']
+                : ['+STR', '-STR']
+              setSavingThrows(savingThrows.replace(oldStr, newStr))
+            }}
           />
           <Form.Switch
+            className='label'
             type='switch'
             name='dexterity'
             label='dexterity'
-            checked={savingThrows.dexterity}
-            onChange={event =>
-              setSavingThrows({
-                ...savingThrows,
-                dexterity: event.target.checked
-              })
-            }
+            checked={savingThrows.includes('+DEX')}
+            onChange={event => {
+              const [oldDex, newDex] = event.target.checked
+                ? ['-DEX', '+DEX']
+                : ['+DEX', '-DEX']
+              setSavingThrows(savingThrows.replace(oldDex, newDex))
+            }}
           />
-          ;
-          <Button variant='primary' type='submit'>
+          <Form.Switch
+            className='label'
+            type='switch'
+            name='constitution'
+            label='constitution'
+            checked={savingThrows.includes('+CON')}
+            onChange={event => {
+              const [oldCon, newCon] = event.target.checked
+                ? ['-CON', '+CON']
+                : ['+CON', '-CON']
+              setSavingThrows(savingThrows.replace(oldCon, newCon))
+            }}
+          />
+          <Form.Switch
+            className='label'
+            type='switch'
+            name='intelligence'
+            label='intelligence'
+            checked={savingThrows.includes('+INT')}
+            onChange={event => {
+              const [oldInt, newInt] = event.target.checked
+                ? ['-INT', '+INT']
+                : ['+INT', '-INT']
+              setSavingThrows(savingThrows.replace(oldInt, newInt))
+            }}
+          />
+          <Form.Switch
+            className='label'
+            type='switch'
+            name='wisdom'
+            label='wisdom'
+            checked={savingThrows.includes('+WIS')}
+            onChange={event => {
+              const [oldWis, newWis] = event.target.checked
+                ? ['-WIS', '+WIS']
+                : ['+WIS', '-WIS']
+              setSavingThrows(savingThrows.replace(oldWis, newWis))
+            }}
+          />
+          <Form.Switch
+            className='label'
+            type='switch'
+            name='charisma'
+            label='charisma'
+            checked={savingThrows.includes('+CHA')}
+            onChange={event => {
+              const [oldCha, newCha] = event.target.checked
+                ? ['-CHA', '+CHA']
+                : ['+CHA', '-CHA']
+              setSavingThrows(savingThrows.replace(oldCha, newCha))
+            }}
+          />
+          <Button className='start-btn' type='submit'>
             Submit
           </Button>
         </Form>

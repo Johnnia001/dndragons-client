@@ -82,23 +82,24 @@ const Character = ({ user, msgAlert }) => {
           <p>{character.race}</p>
           <p>{character.alignment}</p>
           <p>{character.background}</p>
-          <h3>Ability Scores</h3>
+          <p>Ability Scores</p>
           <p>Strength: {character.strength}</p>
           <p>Dexterity: {character.dexterity}</p>
           <p>Constitution: {character.constitution}</p>
           <p>Intelligence: {character.intelligence}</p>
           <p>Wisdom: {character.wisdom}</p>
           <p>Charisma: {character.charisma}</p>
-          <p>
-            Saving Throws:{' '}
-            {Object.keys(character.savingThrows).join(', ')}
-          </p>
+          <p>Proficiency: {character.prof}</p>
+          <p>Saving Throws:{character.savingThrows}</p>
 
-          <Button variant='danger' onClick={onDeleteCharacter}>
+          <Button
+            className='start-btn'
+            onClick={onDeleteCharacter}
+          >
             Delete Character
           </Button>
           <Link to={`/characters/${id}/edit`}>
-            <Button variant='primary' type='submit'>
+            <Button className='start-btn' type='submit'>
               Update Character
             </Button>
           </Link>

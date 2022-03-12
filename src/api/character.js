@@ -48,6 +48,7 @@ export const editCharacter = (
   intelligence,
   wisdom,
   charisma,
+  prof,
   savingThrows
 ) => {
   const charDetails = {
@@ -97,6 +98,10 @@ export const editCharacter = (
   if (charisma !== '') {
     charDetails.charisma = charisma
   }
+  if (prof !== '') {
+    charDetails.prof = prof
+  }
+
   console.log(charDetails)
   return axios.patch(
     `${apiUrl}/characters/${id}/`,

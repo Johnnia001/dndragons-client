@@ -4,17 +4,14 @@ import AbilityCreate from './Character/AbilityScore'
 import { Navigate } from 'react-router-dom'
 import { createCharacter } from '../api/character'
 import SpiCreate from './Character/SavingProfInsp'
-// import Form from 'react-bootstrap/Form'
-// import Button from 'react-bootstrap/Button'
+
 import {
   characterCreateSuccess,
   characterCreateFailure
 } from './AutoDismissAlert/messages'
 
 const CharForm = ({ user, setUser, msgAlert }) => {
-  const [page, setPage] = useState(0)
-  const [shouldNavigate, setShouldNavigate] = useState(false)
-  const [character, setCharacter] = useState({
+  const emptyCharacter = {
     name: '',
     level: '',
     exp: '',
@@ -28,18 +25,19 @@ const CharForm = ({ user, setUser, msgAlert }) => {
     intelligence: '',
     wisdom: '',
     charisma: '',
-    savingThrows: {
-      strength: false,
-      dexterity: false
-    }
-  })
+    prof: '',
+    savingThrows: '-STR-DEX-CON-INT-WIS-CHA'
+    // skills: ''
+  }
+
+  const [page, setPage] = useState(0)
+  const [shouldNavigate, setShouldNavigate] = useState(false)
+  const [character, setCharacter] = useState(Object.assign({}, emptyCharacter))
   if (!user) {
     return <Navigate to='/' />
   }
 
   const onCharacterCreate = async () => {
-    // event.preventDefault()
-
     try {
       await createCharacter(user, character).then(res => {
         user.character = res.data.character
@@ -56,7 +54,7 @@ const CharForm = ({ user, setUser, msgAlert }) => {
         message: characterCreateFailure,
         variant: 'danger'
       })
-      setCharacter('')
+      setCharacter(Object.assign({}, emptyCharacter))
     }
   }
   if (shouldNavigate) {
@@ -84,20 +82,21 @@ const CharForm = ({ user, setUser, msgAlert }) => {
 
   return (
     <div className='form'>
-      <div className='progressbar'>
-        <div
-          style={{
-            width: page === 0 ? '33.3%' : page === 1 ? '66.6%' : '100%'
-          }}
-        ></div>
-      </div>
-      <div className='form-container'>
-        <div className='header'>
-          <h1>{FormTitles[page]}</h1>
+      <div>
+        <div className='form-container'>
+          <div className='flex-container'>
+            <div className='header'>
+              <h1>{FormTitles[page]}</h1>;
+            </div>
+            <div className='dice20'>
+              <img className='dice' src={require('./img/d202.gif').default} />
+            </div>
+          </div>
         </div>
         <div className='body'>{PageDisplay()}</div>
         <div className='footer'>
           <button
+            className='start-btn'
             disabled={page === 0}
             onClick={() => {
               setPage(currPage => currPage - 1)
@@ -106,6 +105,7 @@ const CharForm = ({ user, setUser, msgAlert }) => {
             Prev
           </button>
           <button
+            className='start-btn'
             onClick={async event => {
               if (page === FormTitles.length - 1) {
                 await onCharacterCreate()

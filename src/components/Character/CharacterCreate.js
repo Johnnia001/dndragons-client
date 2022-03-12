@@ -1,13 +1,6 @@
 import React from 'react'
-// import { Navigate } from 'react-router-dom'
-// import { createCharacter } from '../../api/character'
-// import CharForm form '../Form'
+
 import Form from 'react-bootstrap/Form'
-// // import Button from 'react-bootstrap/Button'
-// import {
-//   characterCreateSuccess,
-//   characterCreateFailure
-// } from '../AutoDismissAlert/messages'
 
 const CharacterCreate = ({ character, setCharacter }) => {
   return (
@@ -162,9 +155,6 @@ const CharacterCreate = ({ character, setCharacter }) => {
               }
             />
           </Form.Group>
-          {/* <Button variant='primary' type='submit'>
-            Next
-  </Button> */}
         </Form>
       </div>
     </div>

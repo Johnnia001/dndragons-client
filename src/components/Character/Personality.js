@@ -1,13 +1,6 @@
 import React from 'react'
-// import { Navigate } from 'react-router-dom'
-// import { createCharacter } from '../../api/character'
-// import CharForm form '../Form'
+
 import Form from 'react-bootstrap/Form'
-// // import Button from 'react-bootstrap/Button'
-// import {
-//   characterCreateSuccess,
-//   characterCreateFailure
-// } from '../AutoDismissAlert/messages'
 
 const PersonalityCreate = ({ character, setCharacter }) => {
   return (

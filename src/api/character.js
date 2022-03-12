@@ -17,7 +17,6 @@ export const getOneCharacter = (id, user) => {
   })
 }
 export const createCharacter = (user, character) => {
-  console.log(character)
   return axios.post(
     `${apiUrl}/characters/create/`,
     {
@@ -55,10 +54,7 @@ export const editCharacter = (
     user,
     savingThrows
   }
-  // if ( !== '') {
-  // charDetails. =
-  //     }
-
+  // If no changes made it keeps previous value :)
   if (name !== '') {
     charDetails.name = name
   }
@@ -102,7 +98,6 @@ export const editCharacter = (
     charDetails.prof = prof
   }
 
-  console.log(charDetails)
   return axios.patch(
     `${apiUrl}/characters/${id}/`,
     {

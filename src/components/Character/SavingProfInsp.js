@@ -1,9 +1,6 @@
 import React from 'react'
-// import { Navigate } from 'react-router-dom'
-// import { createCharacter } from '../../api/character'
-// import CharForm form '../Form'
+
 import Form from 'react-bootstrap/Form'
-// import Select from 'react-select'
 
 const SpiCreate = ({ character, setCharacter, event }) => {
   return (

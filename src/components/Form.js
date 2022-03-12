@@ -109,7 +109,6 @@ const CharForm = ({ user, setUser, msgAlert }) => {
             onClick={async event => {
               if (page === FormTitles.length - 1) {
                 await onCharacterCreate()
-                console.log(character)
               } else {
                 setPage(currPage => currPage + 1)
               }

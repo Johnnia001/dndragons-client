@@ -31,26 +31,6 @@ const Characters = ({ user, msgAlert }) => {
     fetchCharacter()
   }, [])
 
-  // const onDeleteCharacter = async () => {
-  //   try {
-  //     await deleteCharacter(user, id).then(
-  //       delete user.character,
-  //       setShouldNavigate(true),
-  //       msgAlert({
-  //         heading: 'Character Deleted Successfully',
-  //         message: characterDeleteSuccess,
-  //         variant: 'success'
-  //       })
-  //     )
-  //   } catch (error) {
-  //     msgAlert({
-  //       heading: 'Delete Character failed with error: ',
-  //       message: error.message,
-  //       variant: 'danger'
-  //     })
-  //   }
-  // }
-
   if (shouldNavigate) {
     return <Navigate to='/' />
   }

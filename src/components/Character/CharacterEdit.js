@@ -231,7 +231,11 @@ const CharacterEdit = ({ user, msgAlert }) => {
           {/*  ABILITY SCORES   */}
 
           <h4>Ability Scores</h4>
-          <FloatingLabel controlId='floatingSelectGrid' label='Strength'>
+          <FloatingLabel
+            className = 'label'
+            controlId='floatingSelectGrid'
+            label='Strength'
+          >
             <Form.Control
               as='select'
               type='strength'
@@ -278,7 +282,11 @@ const CharacterEdit = ({ user, msgAlert }) => {
               </option>
             </Form.Control>
           </FloatingLabel>
-          <FloatingLabel controlId='floatingSelectGrid' label='Dexterity'>
+          <FloatingLabel
+            className='label'
+            controlId='floatingSelectGrid'
+            label='Dexterity'
+          >
             <Form.Control
               as='select'
               type='dexterity'
@@ -325,7 +333,11 @@ const CharacterEdit = ({ user, msgAlert }) => {
               </option>
             </Form.Control>
           </FloatingLabel>
-          <FloatingLabel controlId='floatingSelectGrid' label='Constitution'>
+          <FloatingLabel
+            className='label'
+            controlId='floatingSelectGrid'
+            label='Constitution'
+          >
             <Form.Control
               as='select'
               type='constitution'
@@ -372,7 +384,11 @@ const CharacterEdit = ({ user, msgAlert }) => {
               </option>
             </Form.Control>
           </FloatingLabel>
-          <FloatingLabel controlId='floatingSelectGrid' label='Intelligence'>
+          <FloatingLabel
+            className='label'
+            controlId='floatingSelectGrid'
+            label='Intelligence'
+          >
             <Form.Control
               as='select'
               type='intelligence'
@@ -466,7 +482,11 @@ const CharacterEdit = ({ user, msgAlert }) => {
               </option>
             </Form.Control>
           </FloatingLabel>
-          <FloatingLabel controlId='floatingSelectGrid' label='Charisma'>
+          <FloatingLabel
+            className='label'
+            controlId='floatingSelectGrid'
+            label='Charisma'
+          >
             <Form.Control
               as='select'
               type='charisma'
